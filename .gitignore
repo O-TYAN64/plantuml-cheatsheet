@@ -1,0 +1,4 @@
+# PlantUML 本体（GPL）は再配布しない。各自 plantuml.com から取得する
+plantuml.jar
+*.jar
+qiita_uml記事.md
