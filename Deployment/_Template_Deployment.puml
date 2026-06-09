@@ -1,28 +1,10 @@
 @startuml
-' ============================================================
-'  配置図 記法リファレンス（「こう書くとこうなる」集）
-'  ソフトを物理的な機器のどこに置くかを表す。※コメントは行頭の ' のみ。
-' ============================================================
-title 配置図 記法リファレンス
-
-' ▼ 機器・置き場はキーワードで使い分ける（見た目が変わる）
-'   node=サーバ/機器, database=DB, cloud=外部, folder=フォルダ
-node "Webサーバ" as web {
-  ' ▼ 成果物（配置されるモノ）はこう： artifact "名前"
-  artifact "app.war" as app
-}
-node "APサーバ" as ap {
-  artifact "logic.jar" as logic
+node "Webサーバ" {
+  artifact "app.war"
 }
 database "DBサーバ" as db
 cloud "外部API" as ext
 
-' ▼ 接続・通信はこう： --> に : で説明を付ける
-web --> ap : リクエスト転送
-ap --> db : SQL
-ap --> ext : HTTPS
-
-' ▼ 配置（モノを機器に置く）の依存はこう
-app ..> logic : 呼び出し
-
+[app.war] --> db : SQL
+[app.war] --> ext : HTTPS
 @enduml
